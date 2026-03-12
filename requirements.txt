@@ -18,3 +18,4 @@ reportlab
 httpx
 loguru
 tenacity
+email-validator

@@ -9,11 +9,10 @@ python-jose[cryptography]
 passlib[bcrypt]
 bcrypt
 python-dotenv
-google-genai
+google-generativeai
 chromadb
 pypdf
 python-docx
-pandas
 openpyxl
 reportlab
 httpx

@@ -1,7 +1,7 @@
 fastapi
 uvicorn[standard]
 python-multipart
-pydantic
+pydantic[email]
 pydantic-settings
 sqlalchemy
 aiosqlite
@@ -9,10 +9,11 @@ python-jose[cryptography]
 passlib[bcrypt]
 bcrypt
 python-dotenv
-google-generativeai
+google-genai
 chromadb
 pypdf
 python-docx
+pandas
 openpyxl
 reportlab
 httpx

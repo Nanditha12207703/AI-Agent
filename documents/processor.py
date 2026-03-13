@@ -11,7 +11,12 @@ import csv
 from pathlib import Path
 from typing import Tuple, Optional
 
-import pandas as pd
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+## import pandas as pd
 from loguru import logger
 
 
@@ -98,7 +103,8 @@ class DocumentProcessor:
 
     def _extract_csv(self, file_path: str) -> str:
         try:
-            df = pd.read_csv(file_path, nrows=500)  # Limit rows for safety
+            if HAS_PANDAS: 
+                df = pd.read_csv(file_path, nrows=500)  # Limit rows for safety
             summary = f"CSV File Summary\n"
             summary += f"Rows: {len(df)} | Columns: {list(df.columns)}\n\n"
             summary += "Sample Data (first 20 rows):\n"
@@ -120,7 +126,8 @@ class DocumentProcessor:
 
     def _extract_xlsx(self, file_path: str) -> str:
         try:
-            xl = pd.ExcelFile(file_path)
+            if HAS_PANDAS:
+                xl = pd.ExcelFile(file_path)
             parts = [f"Excel file with sheets: {xl.sheet_names}"]
             for sheet in xl.sheet_names[:5]:  # Max 5 sheets
                 df = xl.parse(sheet, nrows=100)

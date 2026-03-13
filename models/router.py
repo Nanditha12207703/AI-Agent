@@ -11,7 +11,7 @@ Falls back to OpenAI or Anthropic if configured.
 import time
 from enum import Enum
 from typing import AsyncGenerator, Optional, List, Dict, Any
-import google.generativeai as genai
+from google import genai
 from loguru import logger
 
 from config.settings import settings
